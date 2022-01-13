@@ -124,4 +124,12 @@ public class HandlerThreadActivity extends AppCompatActivity {
         return bitmap;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 调用该方法,Looper对象中的MessageQueue存储的Message将全部被清除
+        // mHandlerThread.quitSafely();
+        // 页面结束时,退出HandlerThread中无论是不是延迟消息都将被移除,如果想要保障非延迟消息执行的话,那么使用quitSafely()方法.
+        mHandlerThread.quit();
+    }
 }
