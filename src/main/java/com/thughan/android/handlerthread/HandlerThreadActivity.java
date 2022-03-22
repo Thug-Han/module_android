@@ -31,12 +31,11 @@ import java.net.URL;
  * 可以在handleMessage()方法中执行异步任务。创建HandlerThread后必须先调用HandlerThread.start()方法，
  * Thread会先调用run方法，创建Looper对象。当有耗时任务进入队列时，则不需要开启新线程，在原有的线程中执行耗时任务即可，否则线程阻塞。
  * 它在Android中的一个具体的使用场景是IntentService。
- * 由于HanlderThread的run()方法是一个无限循环，因此当明确不需要再使用HandlerThread时，可以通过它的quit或者quitSafely方法来终止线程的执行。
+ * 由于HandlerThread的run()方法是一个无限循环，因此当明确不需要再使用HandlerThread时，可以通过它的quit或者quitSafely方法来终止线程的执行。
  *
  * HandlerThread优点是异步不会堵塞，减少对性能的消耗。
  * HandlerThread缺点是不能同时继续进行多任务处理，要等待进行处理，处理效率较低。
  * HandlerThread与线程池不同，HandlerThread是一个串队列，背后只有一个线程。
- *
  */
 
 public class HandlerThreadActivity extends AppCompatActivity {
@@ -105,8 +104,6 @@ public class HandlerThreadActivity extends AppCompatActivity {
             urlConnection = (HttpURLConnection) url.openConnection();
             in = new BufferedInputStream(urlConnection.getInputStream(), 8 * 1024);
             bitmap = BitmapFactory.decodeStream(in);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
