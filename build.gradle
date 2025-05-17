@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    namespace "com.thughan.android"
     compileSdkVersion androidVersion.compileSdkVersion
     buildToolsVersion androidVersion.buildToolsVersion
 
@@ -17,8 +18,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName(), isApp: "false"]
-                includeCompileClasspath = true
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
     }
