@@ -1,5 +1,7 @@
-plugins {
-    id 'com.android.library'
+if (ModuleAndroidDebug) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
 }
 
 android {
